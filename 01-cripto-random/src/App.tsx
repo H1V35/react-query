@@ -1,11 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { getRandomNumberFromAPI } from "./services";
+import { useGetRandomNumber } from "./hooks/useGetRandomNumber";
 
 export function App() {
-  const query = useQuery({
-    queryKey: ["randomNumber"],
-    queryFn: getRandomNumberFromAPI,
-  });
+  const query = useGetRandomNumber();
 
   return (
     <main className="flex flex-col items-center gap-4">
