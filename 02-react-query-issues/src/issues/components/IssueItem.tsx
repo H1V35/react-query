@@ -13,7 +13,7 @@ interface Props {
 export const IssueItem: React.FC<Props> = ({ issue }) => {
   const navigate = useNavigate();
 
-  const prefetchIssue = () => {
+  const prefetchData = () => {
     queryClient.prefetchQuery({
       queryKey: ["issue", issue.number],
       queryFn: () => getIssueInfo(issue.number),
@@ -25,11 +25,16 @@ export const IssueItem: React.FC<Props> = ({ issue }) => {
     });
   };
 
+  const preSetData = () => {
+    queryClient.setQueryData(["issue", issue.number], issue);
+  };
+
   return (
     <div
       className="card mb-2 issue"
       onClick={() => navigate(`/issues/issue/${issue.number}`)}
-      onMouseEnter={prefetchIssue}
+      // onMouseEnter={prefetchData}
+      onMouseEnter={preSetData}
     >
       <div className="card-body d-flex align-items-center">
         {issue.state === State.Open ? (
