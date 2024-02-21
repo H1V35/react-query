@@ -8,7 +8,7 @@ import { useIssue } from "../hooks";
 export const IssueView = () => {
   const params = useParams();
   const { id = "0" } = params;
-  const { issueQuery } = useIssue(+id);
+  const { issueQuery, issueCommentsQuery } = useIssue(+id);
 
   if (issueQuery.isLoading) return <LoadingIcon />;
 
@@ -24,10 +24,11 @@ export const IssueView = () => {
       <IssueComment issue={issueQuery.data} />
 
       {/* Comentario de otros */}
-      {/* 
-      <IssueComment body={comment2} />
-      <IssueComment body={comment3} /> 
-      */}
+      {issueCommentsQuery.isLoading && <LoadingIcon />}
+
+      {issueCommentsQuery.data?.map((issue) => (
+        <IssueComment key={issue.id} issue={issue} />
+      ))}
     </div>
   );
 };
