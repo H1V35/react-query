@@ -22,12 +22,12 @@ const placeholderLabels = [
   },
 ];
 
-async function getLabels(): Promise<Label[]> {
+const getLabels = async (): Promise<Label[]> => {
   await sleep(2);
 
   const { data } = await githubApi.get<Label[]>("/labels");
   return data;
-}
+};
 
 export function useLabels() {
   const labelsQuery = useQuery({
