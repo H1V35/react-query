@@ -19,7 +19,11 @@ export const ListView = () => {
   return (
     <div className="row mt-5">
       <div className="col-8">
-        {issuesQuery.isLoading ? <LoadingIcon /> : <IssueList />}
+        {issuesQuery.isLoading ? (
+          <LoadingIcon />
+        ) : (
+          <IssueList issues={issuesQuery.data || []} />
+        )}
       </div>
 
       <div className="col-4">
