@@ -10,7 +10,8 @@ import { State } from "../interfaces";
 export const ListView = () => {
   const [selectedLabels, setSelectedLabels] = React.useState<string[]>([]);
   const [state, setState] = React.useState<State>();
-  const { issuesQuery } = useIssues();
+
+  const { issuesQuery } = useIssues({ labels: selectedLabels, state });
 
   const onLabelChanged = (labelName: string) => {
     selectedLabels.includes(labelName)

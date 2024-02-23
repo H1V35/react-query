@@ -1,19 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import { githubApi } from "../../api/githubApi";
 import { sleep } from "../../helpers/sleep";
-import { Issue } from "../interfaces";
+import { Issue, State } from "../interfaces";
 
-const getIssues = async (): Promise<Issue[]> => {
+interface Props {
+  labels: string[];
+  state?: State;
+}
+
+const getIssues = async (
+  labels: string[] = [],
+  state?: State
+): Promise<Issue[]> => {
   await sleep(2);
 
-  const { data } = await githubApi.get<Issue[]>("/issues");
+  const params = new URLSearchParams();
+
+  if (state) params.append("state", state);
+
+  const { data } = await githubApi.get<Issue[]>("/issues", { params });
   return data;
 };
 
-export function useIssues() {
+export function useIssues({ state, labels }: Props) {
   const issuesQuery = useQuery({
-    queryKey: ["issues"],
-    queryFn: getIssues,
+    queryKey: ["issues", { state, labels }],
+    queryFn: () => getIssues(labels, state),
   });
 
   return { issuesQuery };
