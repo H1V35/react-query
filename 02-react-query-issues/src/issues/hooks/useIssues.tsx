@@ -16,7 +16,15 @@ const getIssues = async (
 
   const params = new URLSearchParams();
 
+  if (labels.length > 0) {
+    const labelsString = labels.join(",");
+    params.append("labels", labelsString);
+  }
+
   if (state) params.append("state", state);
+
+  params.append("page", "1");
+  params.append("per_page", "5");
 
   const { data } = await githubApi.get<Issue[]>("/issues", { params });
   return data;
