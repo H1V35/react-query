@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { githubApi } from "../../api/githubApi";
-import { sleep } from "../../helpers/sleep";
+import { sleep } from "../../helpers";
 import { Label } from "../interfaces/label";
 
 const placeholderLabels = [
