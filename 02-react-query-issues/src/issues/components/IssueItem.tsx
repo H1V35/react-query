@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FiInfo, FiMessageSquare, FiCheckCircle } from "react-icons/fi";
 
 import { queryClient } from "../../lib/tanstack-query";
-import { getIssueComments, getIssueInfo } from "../hooks/useIssue";
+// import { getIssueComments, getIssueInfo } from "../hooks/useIssue";
 import { Issue, State } from "../interfaces";
 
 interface Props {
@@ -13,22 +13,20 @@ interface Props {
 export const IssueItem: React.FC<Props> = ({ issue }) => {
   const navigate = useNavigate();
 
-  const prefetchData = () => {
-    queryClient.prefetchQuery({
-      queryKey: ["issue", issue.number],
-      queryFn: () => getIssueInfo(issue.number),
-    });
+  // const prefetchData = () => {
+  //   queryClient.prefetchQuery({
+  //     queryKey: ["issue", issue.number],
+  //     queryFn: () => getIssueInfo(issue.number),
+  //   });
 
-    queryClient.prefetchQuery({
-      queryKey: ["issue", issue.number, "comments"],
-      queryFn: () => getIssueComments(issue.number),
-    });
-  };
+  //   queryClient.prefetchQuery({
+  //     queryKey: ["issue", issue.number, "comments"],
+  //     queryFn: () => getIssueComments(issue.number),
+  //   });
+  // };
 
   const preSetData = () => {
-    queryClient.setQueryData(["issue", issue.number], issue, {
-      updatedAt: new Date().getTime() + 10000,
-    });
+    queryClient.setQueryData(["issue", issue.number], issue);
   };
 
   return (
