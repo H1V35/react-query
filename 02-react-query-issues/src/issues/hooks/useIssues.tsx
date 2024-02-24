@@ -36,6 +36,10 @@ const getIssues = async ({
 export function useIssues({ labels, state }: Props) {
   const [page, setPage] = React.useState(1);
 
+  React.useEffect(() => {
+    setPage(1);
+  }, [labels, state]);
+
   const issuesQuery = useQuery({
     queryKey: ["issues", { labels, page, state }],
     queryFn: () => getIssues({ labels, page, state }),
@@ -56,7 +60,7 @@ export function useIssues({ labels, state }: Props) {
     issuesQuery,
 
     // Getter
-    page,
+    page: issuesQuery.isFetching ? "Loading..." : page,
 
     // Methods
     nextPage,

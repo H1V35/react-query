@@ -24,11 +24,21 @@ export const ListView = () => {
     <div className="row mt-5">
       <div className="col-8">
         <div className="d-flex mb-2 justify-content-between align-items-center">
-          <button className="btn btn-outline-primary" onClick={prevPage}>
+          <button
+            className="btn btn-outline-primary"
+            disabled={issuesQuery.isFetching}
+            onClick={prevPage}
+          >
             Prev
           </button>
+
           <span>{page}</span>
-          <button className="btn btn-outline-primary" onClick={nextPage}>
+
+          <button
+            className="btn btn-outline-primary"
+            disabled={issuesQuery.isFetching}
+            onClick={nextPage}
+          >
             Next
           </button>
         </div>
@@ -42,16 +52,6 @@ export const ListView = () => {
             onStateChanged={(newState) => setState(newState)}
           />
         )}
-
-        <div className="d-flex mt-2 justify-content-between align-items-center">
-          <button className="btn btn-outline-primary" onClick={prevPage}>
-            Prev
-          </button>
-          <span>{page}</span>
-          <button className="btn btn-outline-primary" onClick={nextPage}>
-            Next
-          </button>
-        </div>
       </div>
 
       <div className="col-4">
