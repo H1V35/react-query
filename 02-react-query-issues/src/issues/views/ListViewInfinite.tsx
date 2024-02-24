@@ -24,22 +24,32 @@ export const ListViewInfinite = () => {
     <div className="row mt-5">
       <div className="col-8">
         {issuesQuery.isLoading ? (
-          <LoadingIcon />
+          <div className="d-flex justify-content-center align-items-center">
+            <LoadingIcon />
+          </div>
         ) : (
-          <IssueList
-            issues={issuesQuery.data?.pages.flat() || []}
-            state={state}
-            onStateChanged={(newState) => setState(newState)}
-          />
-        )}
+          <>
+            <IssueList
+              issues={issuesQuery.data?.pages.flat() || []}
+              state={state}
+              onStateChanged={(newState) => setState(newState)}
+            />
 
-        <button
-          className="btn btn-outline-primary mt-2"
-          disabled={!issuesQuery.hasNextPage}
-          onClick={() => issuesQuery.fetchNextPage()}
-        >
-          Load more...
-        </button>
+            <div className="d-flex mt-2 justify-content-center align-items-center">
+              {issuesQuery.isFetching ? (
+                <LoadingIcon />
+              ) : (
+                <button
+                  className="btn btn-outline-primary"
+                  disabled={!issuesQuery.hasNextPage}
+                  onClick={() => issuesQuery.fetchNextPage()}
+                >
+                  {!issuesQuery.hasNextPage ? "End of content" : "Load more"}
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="col-4">
