@@ -1,11 +1,9 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-
 import { IssueComment } from "../components/IssueComment";
 import { LoadingIcon } from "../../shared/components/LoadingIcon";
-
 import { useIssue } from "../hooks";
 
-export const IssueView = () => {
+export function IssueView() {
   const params = useParams();
   const { id = "0" } = params;
   const { issueQuery, issueCommentsQuery } = useIssue(+id);
@@ -29,4 +27,4 @@ export const IssueView = () => {
       ))}
     </div>
   );
-};
+}

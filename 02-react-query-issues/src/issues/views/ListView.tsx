@@ -5,7 +5,7 @@ import { LoadingIcon } from "../../shared/components/LoadingIcon";
 import { useIssues } from "../hooks";
 import { State } from "../interfaces";
 
-export const ListView = () => {
+export function ListView() {
   const [selectedLabels, setSelectedLabels] = React.useState<string[]>([]);
   const [state, setState] = React.useState<State>();
 
@@ -62,4 +62,4 @@ export const ListView = () => {
       </div>
     </div>
   );
-};
+}

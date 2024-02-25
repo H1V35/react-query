@@ -14,7 +14,7 @@ interface QueryProps {
   queryKey: (string | Props)[];
 }
 
-const getIssues = async ({
+const getIssuesInfinite = async ({
   pageParam = 1,
   queryKey,
 }: QueryProps): Promise<Issue[]> => {
@@ -42,7 +42,7 @@ const getIssues = async ({
 export function useIssuesInfinite({ labels, state }: Props) {
   const issuesQuery = useInfiniteQuery({
     queryKey: ["issues", "infinite", { labels, state }],
-    queryFn: (data) => getIssues(data),
+    queryFn: (data) => getIssuesInfinite(data),
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.length === 0) return;

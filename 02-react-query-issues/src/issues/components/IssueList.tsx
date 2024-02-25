@@ -1,19 +1,13 @@
-import React from "react";
 import { IssueItem } from "./IssueItem";
 import { Issue, State } from "../interfaces";
 
 interface Props {
   issues: Issue[];
   state?: State;
-
   onStateChanged: (state?: State) => void;
 }
 
-export const IssueList: React.FC<Props> = ({
-  issues,
-  state,
-  onStateChanged,
-}) => {
+export function IssueList({ issues, state, onStateChanged }: Props) {
   return (
     <div className="card border-white">
       <div className="card-header bg-dark">
@@ -51,4 +45,4 @@ export const IssueList: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+}

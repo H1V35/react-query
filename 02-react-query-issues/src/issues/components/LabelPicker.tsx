@@ -1,4 +1,3 @@
-import React from "react";
 import { LoadingIcon } from "../../shared/components/LoadingIcon";
 import { useLabels } from "../hooks/useLabels";
 
@@ -7,7 +6,7 @@ interface Props {
   onChange: (labelName: string) => void;
 }
 
-export const LabelPicker: React.FC<Props> = ({ selectedLabels, onChange }) => {
+export function LabelPicker({ selectedLabels, onChange }: Props) {
   const { labelsQuery } = useLabels();
 
   if (labelsQuery.isLoading) return <LoadingIcon />;
@@ -33,4 +32,4 @@ export const LabelPicker: React.FC<Props> = ({ selectedLabels, onChange }) => {
       ))}
     </div>
   );
-};
+}

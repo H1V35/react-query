@@ -1,7 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FiInfo, FiMessageSquare, FiCheckCircle } from "react-icons/fi";
-
 import { queryClient } from "../../lib/tanstack-query";
 // import { getIssueComments, getIssueInfo } from "../hooks/useIssue";
 import { timeSince } from "../../helpers";
@@ -11,7 +9,7 @@ interface Props {
   issue: Issue;
 }
 
-export const IssueItem: React.FC<Props> = ({ issue }) => {
+export function IssueItem({ issue }: Props) {
   const navigate = useNavigate();
 
   // const prefetchData = () => {
@@ -75,4 +73,4 @@ export const IssueItem: React.FC<Props> = ({ issue }) => {
       </div>
     </div>
   );
-};
+}

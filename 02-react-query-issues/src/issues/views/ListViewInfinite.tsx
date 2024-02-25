@@ -5,7 +5,7 @@ import { LoadingIcon } from "../../shared/components/LoadingIcon";
 import { useIssuesInfinite } from "../hooks";
 import { State } from "../interfaces";
 
-export const ListViewInfinite = () => {
+export function ListViewInfinite() {
   const [selectedLabels, setSelectedLabels] = React.useState<string[]>([]);
   const [state, setState] = React.useState<State>();
 
@@ -60,4 +60,4 @@ export const ListViewInfinite = () => {
       </div>
     </div>
   );
-};
+}

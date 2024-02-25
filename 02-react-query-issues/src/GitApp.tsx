@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { Outlet } from "react-router";
 import { ScrollRestoration } from "react-router-dom";
 
-export const GitApp: FC = () => {
+export function GitApp() {
   return (
     <div className="container mt-3">
       <ScrollRestoration />
@@ -12,4 +11,4 @@ export const GitApp: FC = () => {
       <Outlet />
     </div>
   );
-};
+}

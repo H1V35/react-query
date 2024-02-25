@@ -1,4 +1,3 @@
-import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { Issue } from "../interfaces";
 
@@ -6,7 +5,7 @@ interface Props {
   issue: Issue;
 }
 
-export const IssueComment: FC<Props> = ({ issue }) => {
+export function IssueComment({ issue }: Props) {
   return (
     <div className="col-12">
       <div className="card border-white mt-2">
@@ -24,4 +23,4 @@ export const IssueComment: FC<Props> = ({ issue }) => {
       </div>
     </div>
   );
-};
+}
