@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { ProductCard, ProductCardSkeleton, useProduct } from "..";
 import { ErrorPage } from "../../ErrorPage";
+import { ScrollToTop } from "../../shared/components/ScrollToTop";
 
 export function ProductById() {
   const { id } = useParams();
@@ -12,9 +13,11 @@ export function ProductById() {
 
   return (
     <div className="w-full flex-col">
+      <ScrollToTop />
+
       <h1 className="text-2xl font-bold text-center mb-4">Product</h1>
 
-      {product && <ProductCard product={product} fullDescription />}
+      <ProductCard product={product} fullDescription />
     </div>
   );
 }

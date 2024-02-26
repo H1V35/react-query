@@ -1,6 +1,10 @@
+import { ScrollToTop } from "../../shared/components/ScrollToTop";
+
 export function ProductCardSkeleton() {
   return (
     <div className="w-full flex-col animate-pulse">
+      <ScrollToTop />
+
       <h1 className="text-2xl font-bold text-center mb-4">Product</h1>
 
       <div className="relative flex flex-col justify-between md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 w-full md:max-w-3xl h-full mx-auto border border-white bg-white">
