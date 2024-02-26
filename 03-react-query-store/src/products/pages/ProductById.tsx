@@ -1,20 +1,18 @@
 import { useParams } from "react-router-dom";
-import { ProductCard, useProduct } from "..";
-import React from "react";
+import { ProductCard, ProductCardSkeleton, useProduct } from "..";
+import { ErrorPage } from "../../ErrorPage";
 
 export function ProductById() {
   const { id } = useParams();
   const { product, isLoading } = useProduct({ id: +id! });
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  if (isLoading) return <ProductCardSkeleton />;
+
+  if (!product) return <ErrorPage />;
 
   return (
-    <div className="flex-col">
-      <h1 className="text-2xl font-bold">Product</h1>
-
-      {isLoading && <p>Loading...</p>}
+    <div className="w-full flex-col">
+      <h1 className="text-2xl font-bold text-center mb-4">Product</h1>
 
       {product && <ProductCard product={product} fullDescription />}
     </div>

@@ -18,8 +18,8 @@ export function ProductCard({
       to={`/product/${product.id}`}
       onMouseEnter={() => prefetchProduct && prefetchProduct(product.id)}
     >
-      <Card className="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl h-full mx-auto border border-white bg-white">
-        <div className="w-full md:w-1/3 bg-white grid place-items-center">
+      <Card className="relative flex flex-col justify-between md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 w-full md:max-w-3xl h-full mx-auto border border-white bg-white">
+        <div className="w-full h-full md:w-1/3 bg-white grid place-items-center">
           <Image
             src={product.image}
             alt={`${product.title} image`}
@@ -30,11 +30,9 @@ export function ProductCard({
         </div>
 
         <div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
-          <div className="flex justify-between item-center">
-            <p className="text-gray-500 font-medium hidden md:block">
-              {product.category}
-            </p>
-          </div>
+          <p className="text-gray-500 font-medium hidden md:block">
+            {product.category}
+          </p>
 
           <h3 className="font-black text-gray-800 text-xl">{product.title}</h3>
 
