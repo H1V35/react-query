@@ -1,3 +1,4 @@
+import { sleep } from "../../lib/sleep";
 import { type Product, productsApi } from "..";
 
 interface GetProductsOptions {
@@ -5,6 +6,10 @@ interface GetProductsOptions {
 }
 
 export const getProducts = async ({ filterKey }: GetProductsOptions) => {
-  const { data } = await productsApi.get<Product[]>("/products");
+  await sleep(2);
+
+  const filterUrl = filterKey ? `category=${filterKey}` : "";
+
+  const { data } = await productsApi.get<Product[]>(`/products?${filterUrl}`);
   return data;
 };
