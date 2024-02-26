@@ -2,18 +2,18 @@ import { Card, Image } from "@nextui-org/react";
 
 export function ProductCard() {
   return (
-    <Card className="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
-      <div className="w-full md:w-1/3 bg-white grid place-items-center">
+    <Card className="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-zinc-200 bg-zinc-200">
+      <div className="w-full md:w-1/3 bg-zinc-200 grid place-items-center">
         <Image
           src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
           alt="tailwind logo"
           width={300}
           height={400}
-          className="rounded-xl p-5 sm:p-0 bg-white"
+          className="rounded-xl p-5 sm:p-0 bg-zinc-200"
         />
       </div>
 
-      <div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
+      <div className="w-full md:w-2/3 bg-zinc-200 flex flex-col space-y-2 p-3">
         <div className="flex justify-between item-center">
           <p className="text-gray-500 font-medium hidden md:block">Vacations</p>
         </div>

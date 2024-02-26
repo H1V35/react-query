@@ -10,9 +10,9 @@ import styles from "./NavBar.module.css";
 import { AcmeLogo } from "./AcmeLogo";
 
 const routes = [
-  { to: "/", text: "Todo" },
-  { to: "/men", text: "Hombres" },
-  { to: "/women", text: "Mujeres" },
+  { to: "/", text: "All" },
+  { to: "/men", text: "Men" },
+  { to: "/women", text: "Women" },
 ];
 
 export function NavBar() {
@@ -41,7 +41,7 @@ export function NavBar() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Button as={NavLink} color="primary" to="/new" variant="flat">
-            Nuevo producto
+            New product
           </Button>
         </NavbarItem>
       </NavbarContent>
