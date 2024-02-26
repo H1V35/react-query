@@ -1,13 +1,12 @@
-import { ProductList, ProductListSkeleton, useProducts } from "..";
-import { ErrorPage } from "../../ErrorPage";
+import { ProductList, ProductListSkeleton, useProducts } from '..';
+import { ErrorPage } from '../../ErrorPage';
 
 export function MensPage() {
   const { products, isLoading } = useProducts({
     filterKey: "men's clothing",
   });
 
-  if (isLoading)
-    return <ProductListSkeleton category="Products for men" length={4} />;
+  if (isLoading) return <ProductListSkeleton category="Products for men" length={4} />;
 
   if (!products) return <ErrorPage />;
 

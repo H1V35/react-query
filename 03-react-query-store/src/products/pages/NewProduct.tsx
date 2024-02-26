@@ -1,4 +1,4 @@
-import { Button, Image, Input, Textarea } from "@nextui-org/react";
+import { Button, Image, Input, Textarea } from '@nextui-org/react';
 
 export function NewProduct() {
   return (
@@ -28,8 +28,8 @@ export function NewProduct() {
           <div
             className="bg-white rounded-2xl p-10 flex items-center"
             style={{
-              width: "500px",
-              height: "600px",
+              width: '500px',
+              height: '600px',
             }}
           >
             <Image src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" />

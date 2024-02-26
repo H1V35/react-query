@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 import {
   CompleteListPage,
   MensPage,
@@ -6,33 +6,33 @@ import {
   ProductById,
   StoreLayout,
   WomensPage,
-} from "../products";
-import { ErrorPage } from "../ErrorPage";
+} from '../products';
+import { ErrorPage } from '../ErrorPage';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <StoreLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        path: '',
         element: <CompleteListPage />,
       },
       {
-        path: "men",
+        path: 'men',
         element: <MensPage />,
       },
       {
-        path: "women",
+        path: 'women',
         element: <WomensPage />,
       },
       {
-        path: "new",
+        path: 'new',
         element: <NewProduct />,
       },
       {
-        path: "product/:id",
+        path: 'product/:id',
         element: <ProductById />,
       },
     ],

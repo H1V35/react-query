@@ -1,11 +1,10 @@
-import { ProductList, ProductListSkeleton, useProducts } from "..";
-import { ErrorPage } from "../../ErrorPage";
+import { ProductList, ProductListSkeleton, useProducts } from '..';
+import { ErrorPage } from '../../ErrorPage';
 
 export function CompleteListPage() {
   const { products, isLoading } = useProducts({});
 
-  if (isLoading)
-    return <ProductListSkeleton category="All products" length={20} />;
+  if (isLoading) return <ProductListSkeleton category="All products" length={20} />;
 
   if (!products) return <ErrorPage />;
 

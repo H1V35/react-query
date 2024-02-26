@@ -1,18 +1,12 @@
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Button,
-} from "@nextui-org/react";
-import { NavLink } from "react-router-dom";
-import styles from "./NavBar.module.css";
-import { AcmeLogo } from "./AcmeLogo";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from '@nextui-org/react';
+import { NavLink } from 'react-router-dom';
+import styles from './NavBar.module.css';
+import { AcmeLogo } from './AcmeLogo';
 
 const routes = [
-  { to: "/", text: "All" },
-  { to: "/men", text: "Men" },
-  { to: "/women", text: "Women" },
+  { to: '/', text: 'All' },
+  { to: '/men', text: 'Men' },
+  { to: '/women', text: 'Women' },
 ];
 
 export function NavBar() {
@@ -28,9 +22,7 @@ export function NavBar() {
           <NavbarItem key={to}>
             <NavLink
               to={to}
-              className={({ isActive }) =>
-                isActive ? styles.active : styles.inactive
-              }
+              className={({ isActive }) => (isActive ? styles.active : styles.inactive)}
             >
               {text}
             </NavLink>

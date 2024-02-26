@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { productActions } from "..";
+import { useQuery } from '@tanstack/react-query';
+import { productActions } from '..';
 
 interface Options {
   id: number;
@@ -13,7 +13,7 @@ export function useProduct({ id }: Options) {
     isFetching,
     isLoading,
   } = useQuery({
-    queryKey: ["product", id],
+    queryKey: ['product', id],
     queryFn: () => productActions.getProductById(id),
   });
 

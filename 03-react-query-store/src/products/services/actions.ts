@@ -1,5 +1,5 @@
-import { sleep } from "../../lib/sleep";
-import { type Product, productsApi } from "..";
+import { sleep } from '../../utils/sleep';
+import { type Product, productsApi } from '..';
 
 interface GetProductsOptions {
   filterKey?: string;
@@ -12,12 +12,10 @@ export const getProductById = async (id: number): Promise<Product> => {
   return data;
 };
 
-export const getProducts = async ({
-  filterKey,
-}: GetProductsOptions): Promise<Product[]> => {
+export const getProducts = async ({ filterKey }: GetProductsOptions): Promise<Product[]> => {
   await sleep(2);
 
-  const filterUrl = filterKey ? `category=${filterKey}` : "";
+  const filterUrl = filterKey ? `category=${filterKey}` : '';
 
   const { data } = await productsApi.get<Product[]>(`/products?${filterUrl}`);
   return data;

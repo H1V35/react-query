@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { NavBar } from "../../shared";
-import { ScrollToTop } from "../../shared";
+import { Outlet } from 'react-router-dom';
+import { NavBar } from '../../shared';
+import { ScrollToTop } from '../../shared';
 
 export function StoreLayout() {
   return (

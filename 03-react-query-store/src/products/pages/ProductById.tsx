@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { ProductCard, ProductCardSkeleton, useProduct } from "..";
-import { ErrorPage } from "../../ErrorPage";
+import { useParams } from 'react-router-dom';
+import { ProductCard, ProductCardSkeleton, useProduct } from '..';
+import { ErrorPage } from '../../ErrorPage';
 
 export function ProductById() {
   const { id } = useParams();
