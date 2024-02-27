@@ -1,16 +1,21 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { CompleteListPage } from '../products/pages/CompleteListPage';
-import { MensPage } from '../products/pages/MensPage';
-import { NewProduct } from '../products/pages/NewProduct';
-import { ProductById } from '../products/pages/ProductById';
-import { StoreLayout } from '../products/layout/StoreLayout';
-import { WomensPage } from '../products/pages/WomensPage';
-import { ErrorPage } from '../ErrorPage';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
+import { App } from '../App';
+import { lazyImport } from '../utils/lazyImport';
+
+const { CompleteListPage } = lazyImport(
+  () => import('../products/pages/CompleteListPage'),
+  'CompleteListPage'
+);
+const { MensPage } = lazyImport(() => import('../products/pages/MensPage'), 'MensPage');
+const { NewProduct } = lazyImport(() => import('../products/pages/NewProduct'), 'NewProduct');
+const { ProductById } = lazyImport(() => import('../products/pages/ProductById'), 'ProductById');
+const { WomensPage } = lazyImport(() => import('../products/pages/WomensPage'), 'WomensPage');
+const { ErrorPage } = lazyImport(() => import('../ErrorPage'), 'ErrorPage');
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <StoreLayout />,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -32,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: 'product/:id',
         element: <ProductById />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="." />,
       },
     ],
   },
