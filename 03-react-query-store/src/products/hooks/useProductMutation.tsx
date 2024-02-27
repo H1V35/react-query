@@ -16,16 +16,27 @@ export function useProductMutation() {
       // Store product in query client cache
       queryClient.setQueryData<Product[]>(['products', { filterKey: product.category }], (old) => {
         if (!old) return [optimisticProduct];
+
         return [...old, optimisticProduct];
       });
+
+      return {
+        optimisticProduct,
+      };
     },
 
-    onSuccess: (product) => {
-      // queryClient.invalidateQueries({ queryKey: ['products', { filterKey: product.category }] });
+    onSuccess: (product, _variables, context) => {
+      // Query invalidation:
+      //    queryClient.invalidateQueries({ queryKey: ['products', { filterKey: product.category }] });
+
+      queryClient.removeQueries({ queryKey: ['product', context?.optimisticProduct.id] });
 
       queryClient.setQueryData<Product[]>(['products', { filterKey: product.category }], (old) => {
         if (!old) return [product];
-        return [...old, product];
+
+        return old.map((cacheProduct) =>
+          cacheProduct.id === context?.optimisticProduct.id ? product : cacheProduct
+        );
       });
     },
   });
