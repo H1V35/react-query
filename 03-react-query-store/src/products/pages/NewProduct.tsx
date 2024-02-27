@@ -9,8 +9,10 @@ interface FormInputs {
   category: string;
 }
 
+const DEFAULT_IMAGE = 'https://parceljs.org/assets/og.png';
+
 export function NewProduct() {
-  const { control, handleSubmit } = useForm<FormInputs>({
+  const { control, handleSubmit, watch } = useForm<FormInputs>({
     defaultValues: {
       title: '',
       price: 0,
@@ -19,6 +21,8 @@ export function NewProduct() {
       category: "men's clothing",
     },
   });
+
+  const newImage = watch('image') || DEFAULT_IMAGE;
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     console.log(data);
@@ -47,7 +51,7 @@ export function NewProduct() {
               render={({ field }) => (
                 <Input
                   value={field.value?.toString()}
-                  onChange={field.onChange}
+                  onChange={(e) => field.onChange(+e.target.value)}
                   type="number"
                   label="Price"
                 />
@@ -96,11 +100,7 @@ export function NewProduct() {
           </div>
 
           <div className="sm:w-1/2 max-h-[408px] items-center bg-white rounded-2xl p-10 flex justify-center">
-            <Image
-              src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
-              width={300}
-              height={380}
-            />
+            <Image src={newImage} width={300} height={380} className="bg-white" />
           </div>
         </div>
       </form>
