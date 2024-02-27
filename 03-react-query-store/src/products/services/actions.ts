@@ -1,5 +1,5 @@
 import { sleep } from '../../utils/sleep';
-import type { Product } from '../interfaces/products';
+import type { Product, ProductLike } from '../interfaces/products';
 import { productsApi } from '../api/productsApi';
 
 interface GetProductsOptions {
@@ -19,5 +19,12 @@ export const getProducts = async ({ filterKey }: GetProductsOptions): Promise<Pr
   const filterUrl = filterKey ? `category=${filterKey}` : '';
 
   const { data } = await productsApi.get<Product[]>(`/products?${filterUrl}`);
+  return data;
+};
+
+export const createProduct = async (product: ProductLike) => {
+  await sleep(2);
+
+  const { data } = await productsApi.post<Product>(`/products`, product);
   return data;
 };

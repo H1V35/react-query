@@ -8,6 +8,15 @@ export interface Product {
   rating?: Rating;
 }
 
+export interface ProductLike {
+  id?: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+}
+
 export interface Rating {
   rate: number;
   count: number;

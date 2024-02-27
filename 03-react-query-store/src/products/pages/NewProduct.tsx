@@ -1,5 +1,7 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
 import { Button, Image, Input, Textarea } from '@nextui-org/react';
+import { createProduct } from '../services/actions';
 
 interface FormInputs {
   title: string;
@@ -12,6 +14,10 @@ interface FormInputs {
 const DEFAULT_IMAGE = 'https://parceljs.org/assets/og.png';
 
 export function NewProduct() {
+  const productMutation = useMutation({
+    mutationFn: createProduct,
+  });
+
   const { control, handleSubmit, watch } = useForm<FormInputs>({
     defaultValues: {
       title: '',
@@ -25,7 +31,7 @@ export function NewProduct() {
   const newImage = watch('image') || DEFAULT_IMAGE;
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log(data);
+    productMutation.mutate(data);
   };
 
   return (
@@ -94,8 +100,13 @@ export function NewProduct() {
               )}
             />
 
-            <Button type="submit" className="mt-2" color="primary">
-              Create
+            <Button
+              type="submit"
+              className="mt-2"
+              isLoading={productMutation.isPending}
+              color="primary"
+            >
+              {productMutation.isPending ? 'Sending...' : 'Create'}
             </Button>
           </div>
 
