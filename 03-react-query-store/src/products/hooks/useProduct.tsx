@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { productActions } from '..';
+import { getProductById } from '../services/actions';
 
 interface Options {
   id: number;
@@ -14,7 +14,7 @@ export function useProduct({ id }: Options) {
     isLoading,
   } = useQuery({
     queryKey: ['product', id],
-    queryFn: () => productActions.getProductById(id),
+    queryFn: () => getProductById(id),
   });
 
   return { product, error, isError, isFetching, isLoading };

@@ -1,4 +1,6 @@
-import { ProductList, ProductListSkeleton, useProducts } from '..';
+import { ProductList } from '../components/ProductList';
+import { ProductListSkeleton } from '../components/ProductListSkeleton';
+import { useProducts } from '../hooks/useProducts';
 import { ErrorPage } from '../../ErrorPage';
 
 export function WomensPage() {

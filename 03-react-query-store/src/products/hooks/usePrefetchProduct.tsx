@@ -1,11 +1,11 @@
 import { queryClient } from '../../lib/tanstack-query';
-import { productActions } from '..';
+import { getProductById } from '../services/actions';
 
 export function usePrefetchProduct() {
   const prefetchProduct = (id: number) => {
     queryClient.prefetchQuery({
       queryKey: ['product', id],
-      queryFn: () => productActions.getProductById(id),
+      queryFn: () => getProductById(id),
     });
   };
 

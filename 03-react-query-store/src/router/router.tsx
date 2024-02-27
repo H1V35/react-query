@@ -1,12 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
-import {
-  CompleteListPage,
-  MensPage,
-  NewProduct,
-  ProductById,
-  StoreLayout,
-  WomensPage,
-} from '../products';
+import { CompleteListPage } from '../products/pages/CompleteListPage';
+import { MensPage } from '../products/pages/MensPage';
+import { NewProduct } from '../products/pages/NewProduct';
+import { ProductById } from '../products/pages/ProductById';
+import { StoreLayout } from '../products/layout/StoreLayout';
+import { WomensPage } from '../products/pages/WomensPage';
 import { ErrorPage } from '../ErrorPage';
 
 export const router = createBrowserRouter([

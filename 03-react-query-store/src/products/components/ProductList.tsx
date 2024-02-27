@@ -1,4 +1,6 @@
-import { type Product, ProductCard, usePrefetchProduct } from '..';
+import type { Product } from '../interfaces/products';
+import { ProductCard } from './ProductCard';
+import { usePrefetchProduct } from '../hooks/usePrefetchProduct';
 
 interface Props {
   products: Product[];

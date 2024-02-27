@@ -1,6 +1,6 @@
-import { Card, Image } from '@nextui-org/react';
-import { type Product } from '..';
 import { Link } from 'react-router-dom';
+import { Card, Image } from '@nextui-org/react';
+import type { Product } from '../interfaces/products';
 
 interface Props {
   product: Product;

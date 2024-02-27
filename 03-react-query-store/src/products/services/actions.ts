@@ -1,5 +1,6 @@
 import { sleep } from '../../utils/sleep';
-import { type Product, productsApi } from '..';
+import type { Product } from '../interfaces/products';
+import { productsApi } from '../api/productsApi';
 
 interface GetProductsOptions {
   filterKey?: string;

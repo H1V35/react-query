@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { ProductCard, ProductCardSkeleton, useProduct } from '..';
+import { ProductCard } from '../components/ProductCard';
+import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
+import { useProduct } from '../hooks/useProduct';
 import { ErrorPage } from '../../ErrorPage';
 
 export function ProductById() {
