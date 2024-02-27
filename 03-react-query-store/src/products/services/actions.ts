@@ -23,7 +23,7 @@ export const getProducts = async ({ filterKey }: GetProductsOptions): Promise<Pr
 };
 
 export const createProduct = async (product: ProductLike) => {
-  await sleep(2);
+  await sleep(5);
 
   const { data } = await productsApi.post<Product>(`/products`, product);
   return data;

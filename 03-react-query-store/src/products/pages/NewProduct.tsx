@@ -17,10 +17,10 @@ export function NewProduct() {
 
   const { control, handleSubmit, watch } = useForm<FormInputs>({
     defaultValues: {
-      title: '',
-      price: 0,
-      image: '',
-      description: '',
+      title: 'Sunglasses',
+      price: 33,
+      image: 'https://opticaval.es/wp-content/uploads/2023/03/190605349090.jpg',
+      description: 'Polarized sunglasses for men',
       category: "men's clothing",
     },
   });
