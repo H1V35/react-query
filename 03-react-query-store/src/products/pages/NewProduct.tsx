@@ -1,7 +1,6 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { useMutation } from '@tanstack/react-query';
 import { Button, Image, Input, Textarea } from '@nextui-org/react';
-import { createProduct } from '../services/actions';
+import { useProductMutation } from '../hooks/useProductMutation';
 
 interface FormInputs {
   title: string;
@@ -14,9 +13,7 @@ interface FormInputs {
 const DEFAULT_IMAGE = 'https://parceljs.org/assets/og.png';
 
 export function NewProduct() {
-  const productMutation = useMutation({
-    mutationFn: createProduct,
-  });
+  const productMutation = useProductMutation();
 
   const { control, handleSubmit, watch } = useForm<FormInputs>({
     defaultValues: {
