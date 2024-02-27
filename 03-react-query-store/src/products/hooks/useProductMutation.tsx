@@ -1,12 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
-import { createProduct } from '../services/actions';
 import { queryClient } from '../../lib/tanstack-query';
+import { createProduct } from '../services/actions';
+import { Product } from '../interfaces/products';
 
 export function useProductMutation() {
   const mutation = useMutation({
     mutationFn: createProduct,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['products', { filterKey: data.category }] });
+    onSuccess: (product) => {
+      // queryClient.invalidateQueries({ queryKey: ['products', { filterKey: product.category }] });
+
+      queryClient.setQueryData<Product[]>(['products', { filterKey: product.category }], (old) => {
+        if (!old) return [product];
+        return [...old, product];
+      });
     },
   });
 
