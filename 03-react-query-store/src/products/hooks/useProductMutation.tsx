@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { queryClient } from '../../lib/tanstack-query';
-import { createProduct } from '../services/actions';
+import { createProduct, getProducts } from '../services/actions';
 import { Product } from '../interfaces/products';
 
 export function useProductMutation() {
@@ -8,21 +8,26 @@ export function useProductMutation() {
     mutationFn: createProduct,
 
     onMutate: (product) => {
-      console.log('Mutando - Optimistic update');
-
       // Optimistic Product
       const optimisticProduct = { id: Math.random(), ...product };
 
       // Store product in query client cache
       queryClient.setQueryData<Product[]>(['products', { filterKey: product.category }], (old) => {
-        if (!old) return [optimisticProduct];
+        if (!old) {
+          queryClient.fetchQuery({
+            queryKey: ['products', { filterKey: product.category }],
+            queryFn: async () => {
+              const oldProducts = await getProducts({ filterKey: product.category });
 
-        return [...old, optimisticProduct];
+              return [...oldProducts, optimisticProduct];
+            },
+          });
+        }
+
+        return old && [...old, optimisticProduct];
       });
 
-      return {
-        optimisticProduct,
-      };
+      return { optimisticProduct };
     },
 
     onSuccess: (product, _variables, context) => {
